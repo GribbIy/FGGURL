@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploadfile</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .upload-container {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        select, input[type="file"], button {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        select {
+            background: #333;
+            color: white;
+        }
+        input[type="file"] {
+            background: #444;
+            color: white;
+        }
+        button {
+            background: #555;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h2>Upload Your File</h2>
+        <label for="fileType">Choose file type:</label>
+        <select id="fileType">
+            <option value="image">Image</option>
+            <option value="video">Game Asset</option>
+            <option value="document">Video</option>
+            <option value="audio">Audio</option>
+        </select>
+        <br>
+        <input type="file" id="fileUpload">
+        <br>
+        <button onclick="uploadFile()">Upload</button>
+    </div>
+    <script>
+        function uploadFile() {
+            const fileInput = document.getElementById('fileUpload');
+            if (fileInput.files.length > 0) {
+                alert('File uploaded successfully!');
+            } else {
+                alert('Please select a file first.');
+            }
+        }
+    </script>
+</body>
+</html>
