@@ -12,6 +12,15 @@
             width: 100vw;
             position: relative;
             overflow: hidden;
+            box-shadow: inset 0 0 100px 20px #00f0ff;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: auto;
         }
         .loader {
             width: 80px;
@@ -42,16 +51,17 @@
             color: #ffff33;
             max-width: 250px;
             text-shadow: 0 0 5px #ffff33, 0 0 10px #ffff33;
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
+    <img src="Appicon_MVLogo.png" alt="Logo" class="logo">
     <img src="https://gdsgames.net/data/loadingicon.gif" alt="Loading..." class="loader">
     <div class="news">
         <img src="https://gdsgames.net/data/contentdeleted.png" alt="News Update">
         <p>What's new!</p>
         <p>Content Deleted</p>
     </div>
-
 </body>
 </html>
