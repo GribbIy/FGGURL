@@ -104,7 +104,15 @@ var loginRequest = {
   Password: "your_password"
 };
 
-PlayFabClientSDK.LoginWithPlayFab(loginRequest, callback);
+PlayFabClientSDK.LoginWithEmailAddress(loginRequest, function(result, error) {
+  if (result) {
+    alert("Login successful! Welcome " + result.data.PlayFabId);
+    // Optionally: window.location.href = "dashboard.html";
+  } else {
+    alert("Login failed: " + error.errorMessage);
+  }
+});
+
 
 
     PlayFabClientSDK.LoginWithEmailAddress(loginRequest, function(result, error) {
