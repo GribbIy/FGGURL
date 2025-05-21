@@ -94,7 +94,7 @@
   PlayFab.settings.titleId = titleId;
 
   document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // prevent form refresh
+    e.preventDefault();
 
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -106,12 +106,19 @@
     };
 
     PlayFabClientSDK.LoginWithEmailAddress(loginRequest, function(result, error) {
-      if (result) {
-        alert("Login successful! Welcome " + result.data.PlayFabId);
-        // Redirect or do something
+  if (result) {
+    PlayFabClientSDK.GetAccountInfo({}, function(accountResult, accountError) {
+      if (accountResult) {
+        const username = accountResult.data.AccountInfo.Username;
+        alert("Welcome, " + username + "!");
       } else {
-        alert("Login failed: " + error.errorMessage);
+        console.error("Error getting account info:", accountError);
+        alert("Logged in, but couldn't get username.");
       }
+    });
+  } else {
+    alert("Login failed: " + error.errorMessage);
+    }
     });
   });
 </script>
