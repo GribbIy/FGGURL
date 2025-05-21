@@ -89,41 +89,33 @@
     </div>
   </div>
 
-  <script>
+<script>
   var titleId = "10961F"; 
   PlayFab.settings.titleId = titleId;
 
   document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+    e.preventDefault(); // prevent form refresh
 
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
-var loginRequest = {
-  Username: "your_username",
-  Password: "your_password"
-};
-
-PlayFabClientSDK.LoginWithEmailAddress(loginRequest, function(result, error) {
-  if (result) {
-    alert("Login successful! Welcome " + result.data.PlayFabId);
-    // Optionally: window.location.href = "dashboard.html";
-  } else {
-    alert("Login failed: " + error.errorMessage);
-  }
-});
-
-
+    var loginRequest = {
+      Email: email,
+      Password: password,
+      TitleId: titleId
+    };
 
     PlayFabClientSDK.LoginWithEmailAddress(loginRequest, function(result, error) {
       if (result) {
         alert("Login successful! Welcome " + result.data.PlayFabId);
+        // Redirect or do something
       } else {
         alert("Login failed: " + error.errorMessage);
       }
     });
   });
 </script>
+
 
   
 </body>
