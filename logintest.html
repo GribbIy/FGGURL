@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://download.playfab.com/PlayFabClientApi.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
@@ -77,15 +78,46 @@
 
   <div class="login-container">
     <h2>Login</h2>
-    <form>
-      <input type="text" placeholder="Username or Email" required />
-      <input type="password" placeholder="Password" required />
-      <button type="submit">Log In</button>
-    </form>
+<form id="loginForm">
+  <input type="text" id="email" placeholder="Username or Email" required />
+  <input type="password" id="password" placeholder="Password" required />
+  <button type="submit">Log In</button>
+</form>
+
     <div class="footer">
       Don't have an account? <a href="#">Sign up</a>
     </div>
   </div>
 
+  <script>
+  var titleId = "10961F"; 
+  PlayFab.settings.titleId = titleId;
+
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+
+var loginRequest = {
+  Username: "your_username",
+  Password: "your_password"
+  TitleId: titleId
+};
+
+PlayFabClientSDK.LoginWithPlayFab(loginRequest, callback);
+
+
+    PlayFabClientSDK.LoginWithEmailAddress(loginRequest, function(result, error) {
+      if (result) {
+        alert("Login successful! Welcome " + result.data.PlayFabId);
+      } else {
+        alert("Login failed: " + error.errorMessage);
+      }
+    });
+  });
+</script>
+
+  
 </body>
 </html>
