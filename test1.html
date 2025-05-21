@@ -1,0 +1,151 @@
+<head>
+  <title>Fit Guy Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #ffccf9, #d5aaff);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .sidebar {
+      position: relative;
+      width: 60px;
+      height: 100%;
+      background: #562b00;
+      box-shadow: 2px 0 15px rgba(86, 43, 0, 0.8);
+      transition: width 0.3s ease-in-out;
+      overflow: hidden;
+      z-index: 10;
+    }
+    .sidebar:hover {
+      width: 240px;
+    }
+    .sidebar-inner {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .sidebar img {
+      width: 60px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.3s ease-in-out;
+    }
+    .sidebar:hover img {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .sidebar h2 {
+      color: #ffffff;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      font-weight: 600;
+    }
+    .sidebar:hover h2 {
+      opacity: 1;
+    }
+    .button {
+      background: #905424;
+      color: #ffffff;
+      border: none;
+      padding: 10px 16px;
+      margin: 6px 0;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      text-align: left;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.3s ease-in-out;
+    }
+    .sidebar:hover .button {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .content {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #fff;
+      background: linear-gradient(to top, rgba(86, 43, 0, 0.8), rgba(99,50,0)), url('DO NOT USE YET');
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.3s ease;
+    }
+    .fade-out {
+      opacity: 0;
+    }
+    .fade-in {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/682ddf6b4b9538190bc4ab3e/1irpj1f3k';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-inner">
+      <img src="https://gdsgames.net/data/FGG2.png" alt="Logo" />
+      <h2>Navigation Bar</h2>
+      <button class="button" onclick="changePage('home')">🏠 Home</button>
+      <button class="button" onclick="changePage('rules')">📜 Rules For Online Play</button>
+      <button class="button" onclick="changePage('connect')">🫂 Connect</button>
+    </div>
+  </div>
+  <div class="content" id="content">
+    I'm working on it ok? :P
+  </div>
+  <audio id="hoverSound" src="0" preload="auto"></audio>
+  <script>
+    const content = document.getElementById('content');
+    const pages = {
+      home: "I'm working on it ok?",
+      rules: "FGG Rules and Code of Conduct:",
+      connect: "This does not work yet... Sad"
+    };
+    function changePage(page) {
+      content.classList.add('fade-out');
+      setTimeout(() => {
+        content.innerHTML = pages[page];
+        content.classList.remove('fade-out');
+        content.classList.add('fade-in');
+        setTimeout(() => content.classList.remove('fade-in'), 300);
+      }, 200);
+    }
+    const sidebar = document.getElementById('sidebar');
+    const hoverSound = document.getElementById('hoverSound');
+    let soundPlayed = false;
+    sidebar.addEventListener('mouseenter', () => {
+      if (!soundPlayed) {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+        soundPlayed = true;
+        setTimeout(() => soundPlayed = false, 1000);
+      }
+    });
+  </script>
+</body>
