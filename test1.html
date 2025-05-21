@@ -89,7 +89,7 @@
       opacity: 0;
     }
     .fade-in {
-      opacity: 1;
+      opacity: 0;
     }
   </style>
 </head>
@@ -132,6 +132,10 @@ s0.parentNode.insertBefore(s1,s0);
       content.classList.add('fade-out');
       setTimeout(() => {
         content.innerHTML = pages[page];
+        content.classList.remove('fade-out');
+        content.classList.add('fade-in');
+        setTimeout(() => content.classList.remove('fade-in'), 300);
+      }, 200);
     }
     const sidebar = document.getElementById('sidebar');
     const hoverSound = document.getElementById('hoverSound');
